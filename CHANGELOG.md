@@ -1,7 +1,7 @@
 # ChangeLog
 
-## v0.0.1 - [xxx]
+## v0.1.0 - 2025-04-02
 
 ###  Enhancements:
 
-* [xxx]
+* feat(libs): support signals2, thread
