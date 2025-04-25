@@ -32,6 +32,11 @@
  */
 #define BOOST_THREAD_HAS_NO_EINTR_BUG
 #define BOOST_THREAD_USES_GETPAGESIZE
+// Allow `join()` to throw exceptions
+#define BOOST_THREAD_THROW_IF_PRECONDITION_NOT_SATISFIED
+// Since `pthread_cond_timedwait()` uses `gettimeofday()` to get current time,
+// we don't use `CLOCK_MONOTONIC`
+#define BOOST_THREAD_INTERNAL_CLOCK_DONT_USE_MONO
 
 /**
  * lib: unordered
@@ -48,6 +53,13 @@
 
 #include "esp_idf_version.h"
 #include "sdkconfig.h"
+
+#if !defined(CONFIG_COMPILER_CXX_RTTI)
+    #error "C++ run-time type info feature is not enabled, please enable `CONFIG_COMPILER_CXX_RTTI` in the menuconfig!"
+#endif
+#if !defined(CONFIG_COMPILER_CXX_EXCEPTIONS)
+    #error "C++ exception feature is not enabled, please enable `CONFIG_COMPILER_CXX_EXCEPTIONS` in the menuconfig!"
+#endif
 
 /**
  * When `CONFIG_STDATOMIC_S32C1I_SPIRAM_WORKAROUND` is enabled, `boost::atomic` will trigger assert error
@@ -72,18 +84,3 @@
     // Avoid assert error in `test_store_value_from_thread`
     #define BOOST_THREAD_DONT_PROVIDE_THREAD_DESTRUCTOR_CALLS_TERMINATE_IF_JOINABLE
 // #endif
-
-#if !defined(CONFIG_COMPILER_CXX_RTTI)
-    #define BOOST_NO_RTTI
-    #define BOOST_NO_TYPEID
-#endif
-
-#if !defined(CONFIG_COMPILER_CXX_EXCEPTIONS)
-    #define BOOST_NO_EXCEPTIONS
-#else
-    /**
-     * lib: thread
-     */
-    // Allow `join()` to throw exceptions
-    #define BOOST_THREAD_THROW_IF_PRECONDITION_NOT_SATISFIED
-#endif

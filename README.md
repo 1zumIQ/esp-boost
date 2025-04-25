@@ -10,14 +10,15 @@
 
 ## Overview
 
-esp-boost is a C++ library ported by Espressif based on [Boost](https://github.com/boostorg/boost), designed for developing C++ applications on ESP series SoCs (ESP32, ESP32-S3, ESP32-P4, etc.). It supports multiple development frameworks including [ESP-IDF](https://github.com/espressif/esp-idf), [Arduino](https://github.com/espressif/arduino-esp32), and [MicroPython](https://github.com/micropython/micropython).
+esp-boost is a C++ library ported by Espressif based on [Boost](https://github.com/boostorg/boost), designed for developing C++ applications on ESP series SoCs (ESP32, ESP32-S3, ESP32-P4, etc.). It supports multiple development frameworks, including [ESP-IDF](https://github.com/espressif/esp-idf), [Arduino](https://github.com/espressif/arduino-esp32), and [MicroPython](https://github.com/micropython/micropython).
 
 > [!NOTE]
-> - The official Boost version ported in esp-boost is `1.87.0`.
+> - esp-boost is ported from the official Boost library version `1.87.0`.
+> - Most libraries in esp-boost are directly copied from the official repository. Due to platform dependencies in some libraries, we made necessary modifications to compile on ESP-IDF (such as adding [esp32.hpp](src/boost/config/platform/esp32.hpp) and [esp32.cpp](src/boost/config/src/esp32.cpp) in the `config` directory). All modifications are marked with `esp32` comments.
 
 > [!WARNING]
-> - esp-boost has not yet fully ported all libraries from Boost, only some commonly used functionalities have been ported. For specific support information, please refer to [Supported Libraries](#supported-libraries).
-> - Since many Boost libraries require C++ `Exception` and `RTTI` features, and ESP-IDF disables these features by default, it is recommended to enable the `CONFIG_COMPILER_CXX_EXCEPTIONS` and `CONFIG_COMPILER_CXX_RTTI` configuration options when using esp-boost.
+> - esp-boost has not yet fully ported all libraries from Boost, only a subset of commonly used functionalities. For specific support information, please refer to [Supported Libraries](#supported-libraries).
+> - Since many Boost libraries require C++ `Exception` and `RTTI` features, which are disabled by default in ESP-IDF, users need to enable the `CONFIG_COMPILER_CXX_EXCEPTIONS` and `CONFIG_COMPILER_CXX_RTTI` configuration options in `menuconfig`.
 
 ## Table of Contents
 

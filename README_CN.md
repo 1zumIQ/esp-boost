@@ -10,14 +10,15 @@
 
 ## 概述
 
-esp-boost 是 Espressif 基于 [Boost](https://github.com/boostorg/boost) 移植的 C++ 库，用于 ESP 系列 SoCs（ESP32、ESP32-S3、ESP32-P4 等）开发 C++ 应用，它支持多种开发框架，包括 [ESP-IDF](https://github.com/espressif/esp-idf)、[Arduino](https://github.com/espressif/arduino-esp32) 和 [MicroPython](https://github.com/micropython/micropython)。
+esp-boost 是 Espressif 基于 [Boost](https://github.com/boostorg/boost) 移植的 C++ 库，用于 ESP 系列 SoCs（ESP32、ESP32-S3、ESP32-P4 等）开发 C++ 应用。它支持多种开发框架，包括 [ESP-IDF](https://github.com/espressif/esp-idf)、[Arduino](https://github.com/espressif/arduino-esp32) 和 [MicroPython](https://github.com/micropython/micropython)。
 
 > [!NOTE]
 > - esp-boost 移植的 Boost 库官方版本为 `1.87.0`。
+> - esp-boost 中的绝大部分库都是直接从官方仓库拷贝而来。由于部分库具有平台依赖性，为了能够在 ESP-IDF 上进行编译，我们进行了必要的修改（如在 `config` 中新增 [esp32.hpp](src/boost/config/platform/esp32.hpp) 和 [esp32.cpp](src/boost/config/src/esp32.cpp)）。所有修改的地方都会使用 `esp32` 注释标记。
 
 > [!WARNING]
 > - esp-boost 目前还未完全移植 Boost 中的所有库，仅移植了部分常用功能，具体支持情况请参考 [支持的库](#支持的库)。
-> - 由于 Boost 很多库需要使用 C++ `Exception` 和 `RTTI` 特性，而 ESP-IDF 默认禁用这两个特性，因此推荐用户使用时开启 `CONFIG_COMPILER_CXX_EXCEPTIONS` 和 `CONFIG_COMPILER_CXX_RTTI` 配置选项。
+> - 由于 Boost 很多库需要使用 C++ 的 `Exception` 和 `RTTI` 特性，而 ESP-IDF 默认禁用这两个特性，因此用户需要在 `menuconfig` 中开启 `CONFIG_COMPILER_CXX_EXCEPTIONS` 和 `CONFIG_COMPILER_CXX_RTTI` 配置选项。
 
 ## 目录
 

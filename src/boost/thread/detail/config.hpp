@@ -439,6 +439,12 @@
   #endif
 #endif
 
+/* esp32: added a macro to control whether to enable `BOOST_THREAD_INTERNAL_CLOCK_IS_MONO` */
+#if defined(BOOST_THREAD_INTERNAL_CLOCK_DONT_USE_MONO) && \
+    defined(BOOST_THREAD_INTERNAL_CLOCK_IS_MONO)
+#undef BOOST_THREAD_INTERNAL_CLOCK_IS_MONO
+#endif
+
 #if defined(BOOST_THREAD_PLATFORM_WIN32)
 #elif ! defined BOOST_THREAD_INTERNAL_CLOCK_IS_MONO
 #if defined BOOST_PTHREAD_HAS_TIMEDLOCK

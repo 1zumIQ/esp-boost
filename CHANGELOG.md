@@ -1,5 +1,11 @@
 # ChangeLog
 
+## v0.1.1 - 2025-04-25
+
+### Bugfixes:
+
+* fix(thread): disable 'BOOST_THREAD_INTERNAL_CLOCK_IS_MONO' by default
+
 ## v0.1.0 - 2025-04-07
 
 ### Enhancements:
