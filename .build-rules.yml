@@ -18,3 +18,13 @@ test_apps/thread:
 test_apps/graph:
   enable:
     - if: INCLUDE_DEFAULT == 1
+
+# test_apps/array
+test_apps/array:
+  enable:
+    - if: INCLUDE_DEFAULT == 1
+
+# align
+test_apps/align:
+  enable:
+    - if: INCLUDE_DEFAULT == 1

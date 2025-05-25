@@ -118,3 +118,27 @@ build_test_apps_graph_example:
     - .rules:build:test_apps_graph_example
   variables:
     EXAMPLE_DIR: test_apps/graph/example
+
+#
+# Test apps: array
+#
+# test
+build_test_apps_array_test:
+  extends:
+    - .build_examples_template
+    - .build_general_idf_release_image
+    - .rules:build:test_apps_array_test
+  variables:
+    EXAMPLE_DIR: test_apps/array/test
+
+#
+# Test apps: align
+#
+# test
+build_test_apps_align_test:
+  extends:
+    - .build_examples_template
+    - .build_general_idf_release_image
+    - .rules:build:test_apps_align_test
+  variables:
+    EXAMPLE_DIR: test_apps/align/test

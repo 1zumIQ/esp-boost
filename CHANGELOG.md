@@ -5,6 +5,7 @@
 ### Enhancements:
 
 * feat(libs): support graph
+* feat(test_apps): update test cases for array and align
 
 ## v0.1.1 - 2025-04-25
 
