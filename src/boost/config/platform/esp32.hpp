@@ -5,10 +5,6 @@
  */
 //  esp32 specific config options:
 
-#if !defined(ESP_PLATFORM)
-    #error "Not using ESP_PLATFORM"
-#endif
-
 #define BOOST_PLATFORM "esp32"
 
 #ifdef __cplusplus
@@ -51,13 +47,10 @@
  */
 // #undef BOOST_HAS_NANOSLEEP
 
-#include "esp_idf_version.h"
-#include "sdkconfig.h"
-
-#if !defined(CONFIG_COMPILER_CXX_RTTI)
+#if !CONFIG_COMPILER_CXX_RTTI
     #error "C++ run-time type info feature is not enabled, please enable `CONFIG_COMPILER_CXX_RTTI` in the menuconfig!"
 #endif
-#if !defined(CONFIG_COMPILER_CXX_EXCEPTIONS)
+#if !CONFIG_COMPILER_CXX_EXCEPTIONS
     #error "C++ exception feature is not enabled, please enable `CONFIG_COMPILER_CXX_EXCEPTIONS` in the menuconfig!"
 #endif
 
