@@ -13,3 +13,8 @@ test_apps/signals2:
 test_apps/thread:
   enable:
     - if: INCLUDE_DEFAULT == 1
+
+# graph
+test_apps/graph:
+  enable:
+    - if: INCLUDE_DEFAULT == 1

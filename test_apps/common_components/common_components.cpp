@@ -1,3 +1,4 @@
+#include <iostream>
 #include "esp_log.h"
 #include "esp_heap_caps.h"
 #include "esp_pthread.h"
@@ -44,3 +45,24 @@ size_t common_get_memory_leak_threshold()
 {
     return memory_leak_threshold;
 }
+
+std::unique_ptr<std::istream> open_input_stream(const std::unordered_map<std::string, EmbeddedFile>& embedded_files, const char* path) {
+    auto it = embedded_files.find(path);
+    if (it != embedded_files.end()) {
+        const auto& file = it->second;
+        std::string content(reinterpret_cast<const char*>(file.start),
+                            file.end - file.start);
+        
+        while (!content.empty() && content.back() == '\0') {
+            content.pop_back();
+        }
+
+        // Optional debug check
+        // std::cout << "[debug] Embedded content:\n" << content << std::endl;
+
+        return std::make_unique<std::istringstream>(content);
+    }
+
+    throw std::runtime_error(std::string("Embedded file not found: ") + path);
+}
+

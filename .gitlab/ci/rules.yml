@@ -42,6 +42,10 @@
 .patterns-test_apps_thread_test_more: &patterns-test_apps_thread_test_more
   - "test_apps/thread/test_more/**/*"
 
+# test_apps graph example files
+.patterns-test_apps_graph_example: &patterns-test_apps_graph_example
+  - "test_apps/graph/example/**/*"
+
 ##############
 # if anchors #
 ##############
@@ -159,3 +163,19 @@
       changes: *patterns-test_apps_common
     - <<: *if-dev-push
       changes: *patterns-test_apps_thread_test_more
+
+# rules for test_apps graph example
+.rules:build:test_apps_graph_example:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-label-target_test
+    - <<: *if-trigger-job
+    - <<: *if-dev-push
+      changes: *patterns-build_system
+    - <<: *if-dev-push
+      changes: *patterns-component
+    - <<: *if-dev-push
+      changes: *patterns-test_apps_common
+    - <<: *if-dev-push
+      changes: *patterns-test_apps_graph_example

@@ -106,3 +106,15 @@ build_test_apps_thread_test_more:
     - .rules:build:test_apps_thread_test_more
   variables:
     EXAMPLE_DIR: test_apps/thread/test_more
+
+#
+# Test apps: graph
+#
+# example
+build_test_apps_graph_example:
+  extends:
+    - .build_examples_template
+    - .build_general_idf_release_image
+    - .rules:build:test_apps_graph_example
+  variables:
+    EXAMPLE_DIR: test_apps/graph/example
