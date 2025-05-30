@@ -43,6 +43,11 @@
 #include <boost/config/detail/posix_features.hpp>
 
 /**
+ * lib: math
+ */
+#define BOOST_MATH_DISABLE_PCH
+
+/**
  * Avoid link error for missing `nanosleep()`
  */
 // #undef BOOST_HAS_NANOSLEEP

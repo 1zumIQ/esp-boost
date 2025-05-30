@@ -396,6 +396,9 @@ public:
     // tau from vertices of each corresponding new top-blossoms; when label_T[v]
     // is null or we have a smaller tau from missing_label(v), replace T-label
     // and outlet of v (but don't bloom v)
+/* esp32: avoid compilation error */
+#pragma GCC push_options
+#pragma GCC optimize ("O0")
     blossom_iterator_t expand_T_blossom(
         blossom_iterator_t bi, std::vector< blossom_ptr_t >& new_ones)
     {
@@ -440,6 +443,7 @@ public:
 
         return next_bi;
     }
+#pragma GCC pop_options
 
     // when vertices v and w are matched to each other by augmenting,
     // we must set v/w as base vertex of any blossom who contains v/w and

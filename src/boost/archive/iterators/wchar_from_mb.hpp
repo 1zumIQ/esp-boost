@@ -100,6 +100,7 @@ class wchar_from_mb
         bool m_done;
         // default ctor
         sliding_buffer() :
+            m_buffer(), /* esp32: avoid compilation error */
             m_next_available(m_buffer.begin()),
             m_next(m_buffer.begin()),
             m_done(false)
