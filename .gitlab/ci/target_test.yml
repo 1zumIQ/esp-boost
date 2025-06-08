@@ -260,3 +260,45 @@ components_test_format_test:
     TEST_TARGET: ${IDF_TARGET}
     TEST_FOLDER: test_apps/format/test
     TEST_ENV: ${ENV_TAG}
+
+#
+# Test apps: algorithm
+#
+# example
+components_test_algorithm_example:
+  extends:
+    - .pytest_template
+    - .rules:build:test_apps_algorithm_example
+  needs:
+    - job: "build_test_apps_algorithm_example"
+      artifacts: true
+      optional: true
+  parallel:
+    matrix: *idf_target_version_matrix
+  tags:
+    - ${IDF_TARGET}
+    - ${ENV_TAG}
+  image: $DOCKER_TARGET_TEST_v5_1_ENV_IMAGE
+  variables:
+    TEST_TARGET: ${IDF_TARGET}
+    TEST_FOLDER: test_apps/algorithm/example
+    TEST_ENV: ${ENV_TAG}
+# test
+components_test_algorithm_test:
+  extends:
+    - .pytest_template
+    - .rules:build:test_apps_algorithm_test
+  needs:
+    - job: "build_test_apps_algorithm_test"
+      artifacts: true
+      optional: true
+  parallel:
+    matrix: *idf_target_version_matrix
+  tags:
+    - ${IDF_TARGET}
+    - ${ENV_TAG}
+  image: $DOCKER_TARGET_TEST_v5_1_ENV_IMAGE
+  variables:
+    TEST_TARGET: ${IDF_TARGET}
+    TEST_FOLDER: test_apps/algorithm/test
+    TEST_ENV: ${ENV_TAG}

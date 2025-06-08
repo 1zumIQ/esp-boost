@@ -5,6 +5,7 @@
 ### Enhancements:
 * feat(libs): support format
 * feat(test_apps): update examples and test cases for format
+* feat(test_apps): update examples and test cases for algorithm
 
 ## v0.3.0 - 2025-06-25
 
