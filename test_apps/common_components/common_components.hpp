@@ -1,5 +1,9 @@
 #pragma once
 
+#include <sstream>
+#include <memory>
+#include <unordered_map>
+#include <string>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "unity.h"
@@ -21,3 +25,9 @@ void common_set_pthread_config(const char *name, int core_id, int stack, int pri
 void common_reset_pthread_config();
 void common_set_memory_leak_threshold(size_t threshold);
 size_t common_get_memory_leak_threshold();
+
+struct EmbeddedFile {
+    const uint8_t* start;
+    const uint8_t* end;
+};
+std::unique_ptr<std::istream> open_input_stream(const std::unordered_map<std::string, EmbeddedFile>& embedded_files, const char* path);

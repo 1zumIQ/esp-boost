@@ -1,5 +1,11 @@
 # ChangeLog
 
+## v0.2.0 - 2025-06-18
+
+### Enhancements:
+
+* feat(libs): support graph
+
 ## v0.1.1 - 2025-04-25
 
 ### Bugfixes:

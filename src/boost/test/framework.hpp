@@ -23,6 +23,10 @@
 // STL
 #include <stdexcept>
 
+#if defined(ESP_PLATFORM)
+#include "esp_idf_version.h"
+#endif
+
 //____________________________________________________________________________//
 
 namespace boost {
