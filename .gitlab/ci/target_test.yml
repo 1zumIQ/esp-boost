@@ -176,3 +176,49 @@ components_test_graph_example:
     TEST_TARGET: ${IDF_TARGET}
     TEST_FOLDER: test_apps/graph/example
     TEST_ENV: ${ENV_TAG}
+
+#
+# Test apps: array
+#
+# test
+components_test_array_test:
+  extends:
+    - .pytest_template
+    - .rules:build:test_apps_array_test
+  needs:
+    - job: "build_test_apps_array_test"
+      artifacts: true
+      optional: true
+  parallel:
+    matrix: *idf_target_version_matrix
+  tags:
+    - ${IDF_TARGET}
+    - ${ENV_TAG}
+  image: $DOCKER_TARGET_TEST_v5_1_ENV_IMAGE
+  variables:
+    TEST_TARGET: ${IDF_TARGET}
+    TEST_FOLDER: test_apps/array/test
+    TEST_ENV: ${ENV_TAG}
+
+#
+# Test apps: align
+#
+# test
+components_test_align_test:
+  extends:
+    - .pytest_template
+    - .rules:build:test_apps_align_test
+  needs:
+    - job: "build_test_apps_align_test"
+      artifacts: true
+      optional: true
+  parallel:
+    matrix: *idf_target_version_matrix
+  tags:
+    - ${IDF_TARGET}
+    - ${ENV_TAG}
+  image: $DOCKER_TARGET_TEST_v5_1_ENV_IMAGE
+  variables:
+    TEST_TARGET: ${IDF_TARGET}
+    TEST_FOLDER: test_apps/align/test
+    TEST_ENV: ${ENV_TAG}

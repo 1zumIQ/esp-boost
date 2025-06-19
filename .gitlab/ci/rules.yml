@@ -46,6 +46,14 @@
 .patterns-test_apps_graph_example: &patterns-test_apps_graph_example
   - "test_apps/graph/example/**/*"
 
+# test_apps array test files
+.patterns-test_apps_array_test: &patterns-test_apps_array_test
+  - "test_apps/array/test/**/*"
+
+# test_apps align test files
+.patterns-test_apps_align_test: &patterns-test_apps_align_test
+  - "test_apps/align/test/**/*"
+
 ##############
 # if anchors #
 ##############
@@ -179,3 +187,35 @@
       changes: *patterns-test_apps_common
     - <<: *if-dev-push
       changes: *patterns-test_apps_graph_example
+
+# rules for test_apps align test
+.rules:build:test_apps_align_test:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-label-target_test
+    - <<: *if-trigger-job
+    - <<: *if-dev-push
+      changes: *patterns-build_system
+    - <<: *if-dev-push
+      changes: *patterns-component
+    - <<: *if-dev-push
+      changes: *patterns-test_apps_common
+    - <<: *if-dev-push
+      changes: *patterns-test_apps_align_test
+
+# rules for test_apps array test
+.rules:build:test_apps_array_test:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-label-target_test
+    - <<: *if-trigger-job
+    - <<: *if-dev-push
+      changes: *patterns-build_system
+    - <<: *if-dev-push
+      changes: *patterns-component
+    - <<: *if-dev-push
+      changes: *patterns-test_apps_common
+    - <<: *if-dev-push
+      changes: *patterns-test_apps_array_test
