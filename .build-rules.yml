@@ -28,3 +28,8 @@ test_apps/array:
 test_apps/align:
   enable:
     - if: INCLUDE_DEFAULT == 1
+
+# format
+test_apps/format:
+  enable:
+    - if: INCLUDE_DEFAULT == 1
