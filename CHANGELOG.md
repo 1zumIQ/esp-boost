@@ -1,5 +1,12 @@
 # ChangeLog
 
+## v0.2.1 - 2025-06-24
+
+### Enhancements:
+
+* feat(repo): remove cxx compile version
+* feat(repo): remove useless action files
+
 ## v0.2.0 - 2025-06-18
 
 ### Enhancements:
