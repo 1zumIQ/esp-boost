@@ -1,6 +1,10 @@
 # ChangeLog
 
-## v0.2.1 - 2025-06-24
+## v0.3.0 - 2025-06-25
+
+### Breaking Changes:
+
+* break(repo): upgrade esp-idf dependency to >= v5.3
 
 ### Enhancements:
 
