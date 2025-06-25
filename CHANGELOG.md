@@ -1,5 +1,16 @@
 # ChangeLog
 
+## v0.3.0 - 2025-06-25
+
+### Breaking Changes:
+
+* break(repo): upgrade esp-idf dependency to >= v5.3
+
+### Enhancements:
+
+* feat(repo): remove cxx compile version
+* feat(repo): remove useless action files
+
 ## v0.2.0 - 2025-06-18
 
 ### Enhancements:

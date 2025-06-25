@@ -18,14 +18,6 @@ idf_component_register(${COMPONENT_LIB}
         ${COMPONENT_PUBLIC_REQUIRES}
 )
 
-#
-# Set compiler options
-#
-target_compile_options(${COMPONENT_LIB}
-    PUBLIC
-        $<$<COMPILE_LANGUAGE:CXX>:-std=gnu++17>
-)
-
 # esp-boost must be building from ESP platform
 if (NOT ESP_PLATFORM)
     message(FATAL_ERROR "ESP_PLATFORM not defined. Please build from the ESP platform.")

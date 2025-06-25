@@ -48,16 +48,16 @@
 .build_general_idf_release_image:
   parallel:
     matrix:
-      - IMAGE: espressif/idf:release-v5.1
-      - IMAGE: espressif/idf:release-v5.2
       - IMAGE: espressif/idf:release-v5.3
       - IMAGE: espressif/idf:release-v5.4
+      - IMAGE: espressif/idf:release-v5.5
 
 .build_esp32_p4_idf_release_image:
   parallel:
     matrix:
       - IMAGE: espressif/idf:release-v5.3
       - IMAGE: espressif/idf:release-v5.4
+      - IMAGE: espressif/idf:release-v5.5
 
 #
 # Test apps: signals2
