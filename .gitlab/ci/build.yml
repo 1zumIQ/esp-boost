@@ -142,3 +142,23 @@ build_test_apps_align_test:
     - .rules:build:test_apps_align_test
   variables:
     EXAMPLE_DIR: test_apps/align/test
+
+#
+# Test apps: format
+#
+# example
+build_test_apps_format_example:
+  extends:
+    - .build_examples_template
+    - .build_general_idf_release_image
+    - .rules:build:test_apps_format_example
+  variables:
+    EXAMPLE_DIR: test_apps/format/example
+# test
+build_test_apps_format_test:
+  extends:
+    - .build_examples_template
+    - .build_general_idf_release_image
+    - .rules:build:test_apps_format_test
+  variables:
+    EXAMPLE_DIR: test_apps/format/test
