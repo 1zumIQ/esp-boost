@@ -62,6 +62,14 @@
 .patterns-test_apps_format_test: &patterns-test_apps_format_test
   - "test_apps/format/test/**/*"
 
+# test_apps algorithm example files
+.patterns-test_apps_algorithm_example: &patterns-test_apps_algorithm_example
+  - "test_apps/algorithm/example/**/*"
+
+# test_apps algorithm test files
+.patterns-test_apps_algorithm_test: &patterns-test_apps_algorithm_test
+  - "test_apps/algorithm/test/**/*"
+
 ##############
 # if anchors #
 ##############
@@ -259,3 +267,35 @@
       changes: *patterns-test_apps_common
     - <<: *if-dev-push
       changes: *patterns-test_apps_format_test
+
+# rules for test_apps algorithm example
+.rules:build:test_apps_algorithm_example:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-label-target_test
+    - <<: *if-trigger-job
+    - <<: *if-dev-push
+      changes: *patterns-build_system
+    - <<: *if-dev-push
+      changes: *patterns-component
+    - <<: *if-dev-push
+      changes: *patterns-test_apps_common
+    - <<: *if-dev-push
+      changes: *patterns-test_apps_algorithm_example
+
+# rules for test_apps algorithm test
+.rules:build:test_apps_algorithm_test:
+  rules:
+    - <<: *if-protected
+    - <<: *if-label-build
+    - <<: *if-label-target_test
+    - <<: *if-trigger-job
+    - <<: *if-dev-push
+      changes: *patterns-build_system
+    - <<: *if-dev-push
+      changes: *patterns-component
+    - <<: *if-dev-push
+      changes: *patterns-test_apps_common
+    - <<: *if-dev-push
+      changes: *patterns-test_apps_algorithm_test

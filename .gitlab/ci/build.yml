@@ -162,3 +162,23 @@ build_test_apps_format_test:
     - .rules:build:test_apps_format_test
   variables:
     EXAMPLE_DIR: test_apps/format/test
+
+#
+# Test apps: algorithm
+#
+# example
+build_test_apps_algorithm_example:
+  extends:
+    - .build_examples_template
+    - .build_general_idf_release_image
+    - .rules:build:test_apps_algorithm_example
+  variables:
+    EXAMPLE_DIR: test_apps/algorithm/example
+# test
+build_test_apps_algorithm_test:
+  extends:
+    - .build_examples_template
+    - .build_general_idf_release_image
+    - .rules:build:test_apps_algorithm_test
+  variables:
+    EXAMPLE_DIR: test_apps/algorithm/test

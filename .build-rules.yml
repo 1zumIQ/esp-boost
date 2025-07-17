@@ -19,7 +19,7 @@ test_apps/graph:
   enable:
     - if: INCLUDE_DEFAULT == 1
 
-# test_apps/array
+# array
 test_apps/array:
   enable:
     - if: INCLUDE_DEFAULT == 1
@@ -31,5 +31,10 @@ test_apps/align:
 
 # format
 test_apps/format:
+  enable:
+    - if: INCLUDE_DEFAULT == 1
+
+# algorithm
+test_apps/algorithm:
   enable:
     - if: INCLUDE_DEFAULT == 1
