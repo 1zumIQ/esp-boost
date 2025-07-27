@@ -1,11 +1,12 @@
 # ChangeLog
 
-## v0.3.1 - 2025-07-01
+## v0.3.1 - 2025-07-28
 
 ### Enhancements:
 * feat(libs): support format
 * feat(test_apps): update examples and test cases for format
 * feat(test_apps): update examples and test cases for algorithm
+* feat(Kconfig): add 'BOOST_MATH_ENABLED' and 'BOOST_SERIALIZATION_ENABLED', enanle 'COMPILER_CXX_EXCEPTIONS' and 'COMPILER_CXX_RTTI' by default
 
 ## v0.3.0 - 2025-06-25
 

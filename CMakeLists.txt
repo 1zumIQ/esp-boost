@@ -1,8 +1,36 @@
 #
 # Set variables
 #
+
+# Define configuration options with default values
+if(NOT DEFINED CONFIG_BOOST_MATH_ENABLED)
+    set(CONFIG_BOOST_MATH_ENABLED OFF)
+endif()
+
+if(NOT DEFINED CONFIG_BOOST_SERIALIZATION_ENABLED)
+    set(CONFIG_BOOST_SERIALIZATION_ENABLED OFF)
+endif()
+
 set(COMPONENT_SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/src)
-file(GLOB_RECURSE COMPONENT_SRC_FILES ${COMPONENT_SRC_DIR}/*.cpp ${COMPONENT_SRC_DIR}/*.c)
+
+# Collect all source files
+file(GLOB_RECURSE ALL_COMPONENT_SRC_FILES ${COMPONENT_SRC_DIR}/*.cpp ${COMPONENT_SRC_DIR}/*.c)
+
+# Filter out math and serialization files based on configuration
+set(COMPONENT_SRC_FILES ${ALL_COMPONENT_SRC_FILES})
+
+if(NOT CONFIG_BOOST_MATH_ENABLED)
+    # Remove math directory files
+    list(FILTER COMPONENT_SRC_FILES EXCLUDE REGEX ".*/boost/math.*\\.(cpp|c)$")
+    message(STATUS "Boost Math library disabled - excluding math files")
+endif()
+
+if(NOT CONFIG_BOOST_SERIALIZATION_ENABLED)
+    # Remove serialization directory files
+    list(FILTER COMPONENT_SRC_FILES EXCLUDE REGEX ".*/boost/serialization.*\\.(cpp|c)$")
+    message(STATUS "Boost Serialization library disabled - excluding serialization files")
+endif()
+
 set(COMPONENT_INCLUDE_DIRS ${COMPONENT_SRC_DIR})
 set(COMPONENT_PUBLIC_REQUIRES pthread)
 
